@@ -148,6 +148,13 @@ h5, label{
     font-weight: 700;
     text-align: center;
   }
+  #start-test {
+    display: block;
+  }
+  #test-proper, #test-content-body, #additional-information,
+  #account-creation, #finish-test {
+    display: none;
+  }
 }
 
 #start-test {
@@ -210,11 +217,16 @@ h5, label{
 
 
 #test-proper {  
+  span {
+    display: inline-block;
+    margin: 0px 5px;
+  }
   #test-content-body {
     display: grid;
     grid-template-columns: 2fr 1fr;
     row-gap: 50px;
     padding: 2em 5em;
+    
     #question-portion {
       h2 {
         font-size: 3rem;
@@ -243,7 +255,6 @@ h5, label{
     }
   }
 }
-
 
 #additional-information {  
   #additional-information-body-content {
