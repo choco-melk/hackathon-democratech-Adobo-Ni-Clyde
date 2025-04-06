@@ -42,7 +42,7 @@ document.getElementById("prev-button").addEventListener("click", e => {
         setQuestions(currentQuestion);
     } else {
         document.getElementById("start-test").style.display = "block";
-        document.getElementById("test-proper").style.display = "none"        
+        document.getElementById("test-proper").style.display = "none";       
     }
 });
 
@@ -55,6 +55,19 @@ document.getElementById("next-button").addEventListener("click", e => {
     }
 });
 
+// document.getElementById("sign-in-button").addEventListener("click", (e) => {
+//     e.preventDefault();
+
+//     const forgotMessage = document.getElementById("forgot-password");
+//     forgotMessage.style.display = "none";
+
+//     const NAME_REGEX = /^\S+\s\S+$/;
+//     const tempName = document.getElementById("password-login").value.trim();
+
+//     if (NAME_REGEX.test(tempName)) {
+//       forgotMessage.style.display = "inline";
+//     }
+// });
 
 // const radioButtons = [
 //     document.getElementById("strongly-agree"),

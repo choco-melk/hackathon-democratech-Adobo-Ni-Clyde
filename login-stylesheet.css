@@ -162,5 +162,38 @@ h5, label{
       background-color: var(--accent-3);
       margin: auto;
     }
+    a{
+      display:flex;
+      margin-top: -15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    /* #forgot-password{
+      display: none;
+    } */
   }
 }
+
+#register-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f2f2f2;
+  padding: 5px;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  
+  p{
+    color:#2B2B2B;
+  }
+
+  a{
+    text-decoration: underline;
+  }
+
+  a:hover{
+    color:green;
+  }
+}
+
