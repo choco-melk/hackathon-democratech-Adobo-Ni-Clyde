@@ -1,6 +1,8 @@
-function TestQuestion(number, content, advocacy) {
+function TestQuestion(number, content, yesAnswer, noAnswer, advocacy) {
     this.number = number;
     this.content = content;
+    this.noAnswer = noAnswer;
+    this.yesAnswer = yesAnswer;
     this.advocacy = advocacy;
     this.answer = null;
 } 
@@ -25,13 +27,12 @@ const creationNextButton = document.getElementById("creation-finish-button");
 const advocacy = document.getElementById("advocacy");
 const questionNoLabel = document.getElementById("question-number");
 const questionCountLabel = document.getElementById("question-count");
+const currentProgress = document.getElementById("current-progress")
 const questionTitle = document.getElementById("question-title");
 const questionBody = document.getElementById("question-body");
-const stronglyAgreeRadioButton = document.getElementById("strongly-agree");
-const agreeRadioButton = document.getElementById("agree");
-const neutralRadioButton = document.getElementById("neutral");
-const disagreeRadioButton = document.getElementById("disagree");
-const stronglyDisagreeRadioButton = document.getElementById("strongly-disagree");
+const answerDisplay = document.getElementById("answer-display-portion");
+const yesButton = document.getElementById("yes-button");
+const noButton = document.getElementById("no-button");
 
 
 /* Additional Information*/
@@ -42,15 +43,17 @@ const passwordInfo = document.getElementById("password-information");
 
 /* Button Properties and Functions */
 const testQuestions = [
-    new TestQuestion(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy"),
-    new TestQuestion(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy"),
-    new TestQuestion(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy"),
-    new TestQuestion(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy"),
-    new TestQuestion(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy"),
-    new TestQuestion(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "Advocacy")
+    new TestQuestion(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
 ];
 const questionCount = testQuestions.length;
+const statusPercent = 100 / testQuestions.length; 
 let questionNumber = 1;
+
 
 function setTestQuestion(number) {
     advocacy.innerText = testQuestions[number- 1].advocacy;
@@ -58,26 +61,28 @@ function setTestQuestion(number) {
     questionCountLabel.innerText = questionCount;
     questionTitle.innerText = testQuestions[number - 1].advocacy;
     questionBody.innerText = testQuestions[number - 1].content;
+    currentProgress.style.width = ((questionNumber - 1) * statusPercent) + "%";
     flushAllRadioButtons();
     if (testQuestions[number - 1].answer !== null) {
-        document.getElementById(testQuestions[number - 1].answer).style.backgroundColor = "#2B2B2B";
+        document.getElementById(testQuestions[number - 1].answer + "-button").style.backgroundColor = "#2B2B2B";
+        answerDisplay.innerText = (testQuestions[number - 1].answer === "yes") ? 
+                                testQuestions[number - 1].yesAnswer:
+                                testQuestions[number - 1].noAnswer; 
+    } else {
+        answerDisplay.innerText = "";
     }
 }
 
 /* Radio Button Properties and Functions */
 const radioButtons = [
-    stronglyAgreeRadioButton,
-    agreeRadioButton,
-    neutralRadioButton,
-    disagreeRadioButton,
-    stronglyDisagreeRadioButton
+    yesButton,
+    noButton
 ];
 function flushAllRadioButtons() {
     for (let button of radioButtons) {
         button.style.removeProperty("background-color");
     }
 }
-
 
 /* Button OnClick EventListeners */
 startButton.addEventListener("click", e => {
@@ -90,6 +95,7 @@ startButton.addEventListener("click", e => {
 nextButton.addEventListener("click", e => {
     e.preventDefault();
     if (testQuestions[questionNumber - 1].answer === null) {
+        answerDisplay.innerText = "Please choose an answer";
         return
     }
 
@@ -157,35 +163,20 @@ creationPrevButton.addEventListener("click", e => {
 
 
 /* Radio Button OnClick EventListeners */
-stronglyDisagreeRadioButton.addEventListener("click", e => {
+yesButton.addEventListener("click", e => {
     e.preventDefault();
     flushAllRadioButtons();
-    stronglyDisagreeRadioButton.style.backgroundColor = "#2B2B2B";
-    testQuestions[questionNumber - 1].answer = "strongly-disagree";
+    yesButton.style.backgroundColor = "#2B2B2B";
+    testQuestions[questionNumber - 1].answer = "yes";
+    answerDisplay.innerText = testQuestions[questionNumber - 1].yesAnswer;
+
 });
-disagreeRadioButton.addEventListener("click", e => {
+noButton.addEventListener("click", e => {
     e.preventDefault();
     flushAllRadioButtons();
-    disagreeRadioButton.style.backgroundColor = "#2B2B2B";
-    testQuestions[questionNumber - 1].answer = "disagree";
-});
-neutralRadioButton.addEventListener("click", e => {
-    e.preventDefault();
-    flushAllRadioButtons();
-    neutralRadioButton.style.backgroundColor = "#2B2B2B";
-    testQuestions[questionNumber - 1].answer = "neutral";
-});
-agreeRadioButton.addEventListener("click", e => {
-    e.preventDefault();
-    flushAllRadioButtons();
-    agreeRadioButton.style.backgroundColor = "#2B2B2B";
-    testQuestions[questionNumber - 1].answer = "agree";
-});
-stronglyAgreeRadioButton.addEventListener("click", e => {
-    e.preventDefault();
-    flushAllRadioButtons();
-    stronglyAgreeRadioButton.style.backgroundColor = "#2B2B2B";
-    testQuestions[questionNumber - 1].answer = "strongly-agree";
+    noButton.style.backgroundColor = "#2B2B2B";
+    testQuestions[questionNumber - 1].answer = "no";
+    answerDisplay.innerText = testQuestions[questionNumber - 1].noAnswer;
 });
 
 

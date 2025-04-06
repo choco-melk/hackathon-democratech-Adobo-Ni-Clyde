@@ -151,7 +151,7 @@ h5, label{
   #start-test {
     display: block;
   }
-  #test-proper, #test-content-body, #additional-information,
+  #test-proper, #additional-information,
   #account-creation, #finish-test {
     display: none;
   }
@@ -204,7 +204,6 @@ h5, label{
     #current-progress {
       height: inherit;
       background-color: var(--accent-2);
-      width: 10%;
     }
   }
   
@@ -222,25 +221,33 @@ h5, label{
     margin: 0px 5px;
   }
   #test-content-body {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    flex-direction: column;
     row-gap: 50px;
     padding: 2em 5em;
     
     #question-portion {
+      text-align: center;
       h2 {
         font-size: 3rem;
       }
       p {
         width: 40ch;
       }
+      #answer-display-portion {
+        margin: 20px auto 0px;
+        text-align: center;
+      }
     }
     #answer-portion {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
       .answer-containers {
-        display: flex;
-        justify-content: left;
-        align-items: center;
-        margin-bottom: 10px;
+        text-align: center;
+        .radio-button {
+          margin: auto;
+        }
       }
       .radio-button {
         width: 60px;
