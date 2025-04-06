@@ -47,19 +47,19 @@
                     <h2 id="question-title"></h2>
                     <br>
                     <h5 id="question-body"></h5>
+                    <p id="answer-display-portion"></p>
                 </section>
-
                 <section id="answer-portion">
                     <div class="answer-containers">
-                        <div id="agree" class="radio-button"></div>
+                        <div id="yes-button" class="radio-button"></div>
                         <p>Agree</p>
                     </div>
                     <div class="answer-containers">
-                        <div id="neutral" class="radio-button"></div>
+                        <div id="neutral-button" class="radio-button"></div>
                         <p>Neutral</p>
                     </div>
                     <div class="answer-containers">
-                        <div id="disagree" class="radio-button"></div>
+                        <div id="no-button" class="radio-button"></div>
                         <p>Disagree</p>
                     </div>
                 </section>
@@ -98,6 +98,7 @@
 
                     <label>Occupation-sector: </label><br>
                     <select id="occupation-selection">
+                        <option>N/A</option>
                         <option>Agriculture</option>
                         <option>Industry</option>
                         <option>Services</option>
@@ -114,13 +115,12 @@
             </section>
         </section>
 
-        <section id="save-data">
+        <!-- <section id="save-data">
             <header>
                 <figure>
                     <img src="images/placeholder-image.jpg">
                     <figcaption>SAVE DATA INFORMATION</figcaption>
                 </figure>
-                <p>Part 1 of 3</p>
             </header>
 
             <div id="progress-bar">
@@ -132,10 +132,10 @@
                 <h5>Do you wish to save your data?</h5>
             </section>
 
-            <div id="no-button" class="dark-button">NO →</div>
-            <div id="yes-button" class="dark-button">YES →</div>
+            <div id="no-save-button" class="dark-button">← NO</div>
+            <div id="yes-save-button" class="dark-button">YES →</div>
 
-        </section>
+        </section> -->
 
         <section id="account-creation">
             <header>
@@ -156,9 +156,9 @@
                 
                 <form>
                     <label>Account Name: </label><br>
-                    <input id="location-selection" placeholder="Ex. Kentucky Fried Goodness"><br><br>
+                    <input id="name-information" placeholder="Ex. Kentucky Fried Goodness"><br><br>
                     <label>Password: </label><br>
-                    <input id="occupation-selection" type="password"><br><br>
+                    <input id="password-information" type="password"><br><br>
                 </form>
 
                 <footer>
@@ -185,10 +185,10 @@
             <section id="finish-test-body-content">
                 <h2>Finished!</h2><br>
                 <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.</h4><br>
-                <div id="goto-home-button" class="dark-button">GO TO HOME</div>
+                <a href="social-media-for-you-page.html"><div id="goto-home-button" class="dark-button">GO TO HOME</div></a>
             </section>
         </section>
     </div>
 </body>
-<script src="scripts.js"></script>
+<script src="voting-test-scripts.js"></script>
 </html>
