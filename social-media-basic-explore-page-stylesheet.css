@@ -84,9 +84,9 @@ h5 {
 }
 
 .light-button {
-  padding: 0.5em 2em;
+  padding: 1em 2em;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: var(--secondary);
   color: var(--accent-1);
   font-weight: var(--bold);
@@ -98,10 +98,10 @@ h5 {
   display: flex;
   flex-direction: column;
   align-items: end;
-  
   z-index: 1;
   width: 25%;
   height: 100vh;
+  background-color: var(--primary);
 
   img {
     width: 40px;
@@ -159,9 +159,8 @@ h5 {
 #main-content-section {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  height: 100vh;
-  margin-left: 25%;
+  width: 100%;
+  padding: 0% 25%;
   background-color: var(--accent-1);
   
   .content {
@@ -175,17 +174,14 @@ h5 {
       margin: 20px auto 0px;
       width: 180px;
     }
-  }  
-  
-  #user-greeting {
-    border-radius: 20px;
-    padding: 0.5em;
-    margin: 40px 50px;
+  } 
+  .content-background {
+    margin: 30px calc(100px - 2em) ;
+    padding: 2em;
+    border-radius: 10px;
     background-color: var(--accent-2);
-    h3 {
-      padding-left: 1em;
-    }
   }
+
   #candidate-gallery {
     display: grid; 
     grid-template-columns: 1fr 1fr 1fr;
@@ -215,14 +211,47 @@ h5 {
       font-size: 0.8em;
     }
   }
-}
+
+  #candidate-header {
+    display: flex;
+    justify-content: left;
+    padding: 2em 3em;
+    border-radius: 20px;
+    margin: 50px;
+    background-color: #2B2B2B;
+    img {
+      width: 200px;
+      height: 200px;
+      margin-right: 50px;
+      border-radius: 50%;
+    }
+    #candidate-header-information {
+      div {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        align-items: center;
+      }
+      .light-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 40px;
+        margin-left: 20px;
+      }
+    }    
+  }  
+}        
+
 
 #other-content-section {
   position: fixed;
   right: 0;
   top: 0;
   width: 25%;
+  height: 100vh;
   padding: 2em;
+  background-color: var(--primary);
   input {
     width: 250px;
     height: 40px;
@@ -230,3 +259,4 @@ h5 {
     border-radius: 10px;
   }
 }
+

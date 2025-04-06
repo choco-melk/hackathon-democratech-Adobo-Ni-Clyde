@@ -70,8 +70,8 @@ a {
   color: inherit;
 }
 h2 {
-  font-size: 3.5rem;
-  line-height: 3rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
 }
 h3 {
   font-size: 2rem;
@@ -95,33 +95,58 @@ h5 {
 /* Start of Content Styling*/
 #main-navigation-section {
   position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  
   z-index: 1;
-  width: 20%;
+  width: 25%;
   height: 100vh;
 
-  img[src="images/placeholder-image.jpg"] {
-    width: 50px;
-    height: 50px;
+  img {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    margin: 20px;
-  }
-
+    margin-right: 1em;
+  }  
+  
   #logo {
     display: flex;
-    justify-content: left;
+    justify-content: right;
     align-items: center;
+    width: 100%;
     height: 100px;
+    padding-right: 3em;
     background-color: var(--default-dark);
   }
-  nav {
-    padding: 3em 2em;
-  }
-  #services {
-    h5 {
+  
+  #services{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    margin-top: 30px;
+    
+    #user-profile {
+      display: flex;
+      justify-content: right;
+      align-items: center;
+      width: 100%;
+      padding-right: 4em;
+      margin: 10px 0px;
+
+      font-weight: var(--bold);
+      * {
+        display: flex;
+        align-items: center;
+      }
+    }
+    a {
       display: flex;
       align-items: center;
-      margin: 20px 0px;
-      font-weight: var(--bold);
+      font-weight: var(--semi-bold);
+      padding-right: 4em;
+      margin: 10px 0px;
+
     }
 
     img {
@@ -134,8 +159,8 @@ h5 {
 #main-content-section {
   display: flex;
   flex-direction: column;
-  width: 60%;
-  margin-left: 20%;
+  width: 50%;
+  margin-left: 25%;
   background-color: var(--accent-1);
   
   .content {
@@ -150,27 +175,35 @@ h5 {
       width: 180px;
     }
   }
-
-  #content-mode {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    background-color: var(--accent-2);
-    text-align: center;
-    padding: 2px;
-    line-height: 2.5rem;
-    font-weight: var(--semi-bold);
-    div {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+  
+  #candidate-header {
+    display: flex;
+    justify-content: left;
+    padding: 2em 3em;
+    border-radius: 20px;
+    margin: 50px;
+    background-color: #2B2B2B;
+    img {
+      width: 200px;
+      height: 200px;
+      margin-right: 50px;
+      border-radius: 50%;
     }
-    #for-you-page {
-      border-right: solid 2px var(--default-light);
-    }
-    .mode-focused p{
-      font-weight: 800;
-      border-bottom: solid 3px var(--default-light);
-    }
+    #candidate-header-information {
+      div {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+        align-items: center;
+      }
+      .light-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 40px;
+        margin-left: 20px;
+      }
+    }    
   }          
 }
 
@@ -178,76 +211,15 @@ h5 {
   position: fixed;
   right: 0;
   top: 0;
-  width: 20%;
-}
-
-
-/*
- * Specific Webpage Styles
- * These ares styles that will be specific in one wepage.
- */
-
- #social-media-for-you-page {
-  #main-content-section {
-    #candidate-gallery {
-      display: grid; 
-      grid-template-columns : 220px 220px;
-      grid-template-rows: 220px 220px;
-      row-gap: 50px;
-      column-gap: 50px;
-      justify-content: center;
-      padding: 2em;
-
-      figure {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1em;
-        border-radius: 20px;
-        background-color: var(--secondary);
-        color: var(--primary);
-        text-align: center; 
-        font-weight: var(--extra-bold);
-      }
-
-      img {
-        border-radius: 50%;
-      }
-    }
+  width: 25%;
+  height: 100vh;
+  padding: 2em;
+  background-color: var(--primary);
+  input {
+    width: 250px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 10px;
   }
 }
 
-
-#social-media-candidate-page {
-  #main-content-section {
-    #candidate-header {
-      display: flex;
-      justify-content: left;
-      padding: 2em 3em;
-      border-radius: 20px;
-      margin: 50px;
-      background-color: #2B2B2B;
-      img {
-        width: 200px;
-        height: 200px;
-        margin-right: 50px;
-        border-radius: 50%;
-      }
-      #candidate-header-information {
-        div {
-          display: grid;
-          grid-template-columns: 3fr 1fr;
-          align-items: center;
-        }
-        .light-button {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          width: 100px;
-          height: 40px;
-          margin-left: 20px;
-        }
-      }    
-    }
-  }
-} 

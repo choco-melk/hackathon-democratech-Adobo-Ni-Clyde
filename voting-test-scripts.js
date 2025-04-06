@@ -12,7 +12,7 @@ function TestQuestion(number, content, yesAnswer, noAnswer, neutralAnswer, advoc
 const startPage = document.getElementById("start-test");
 const testPage = document.getElementById("test-proper");
 const additionalInfoPage = document.getElementById("additional-information");
-const accountCreationPage = document.getElementById("account-creation");
+// const accountCreationPage = document.getElementById("account-creation");
 // const saveDataPage = document.getElementById("save-data");
 const finishPage = document.getElementById("finish-test");
 
@@ -22,8 +22,8 @@ const prevButton = document.getElementById("prev-button");
 const nextButton = document.getElementById("next-button");
 const additionalInfoPrevButton = document.getElementById("additional-information-prev-button");
 const additionalInfoNextButton = document.getElementById("additional-information-next-button");
-const creationPrevButton = document.getElementById("creation-prev-button");
-const creationNextButton = document.getElementById("creation-finish-button");
+// const creationPrevButton = document.getElementById("creation-prev-button");
+// const creationNextButton = document.getElementById("creation-finish-button");
 // const saveDataPrevButton = document.getElementById("no-save-button");
 // const saveDataNextButton = document.getElementById("yes-save-button");
 
@@ -43,8 +43,8 @@ const neutralButton = document.getElementById("neutral-button");
 /* Additional Information*/
 const locationInfo = document.getElementById("location-selection");
 const occupationInfo = document.getElementById("occupation-selection");
-const nameInfo = document.getElementById("name-information");
-const passwordInfo = document.getElementById("password-information");
+// const nameInfo = document.getElementById("name-information");
+// const passwordInfo = document.getElementById("password-information");
 
 /* Button Properties and Functions */
 const testQuestions = [
@@ -132,7 +132,8 @@ prevButton.addEventListener("click", e => {
 
 additionalInfoNextButton.addEventListener("click", e => {
     e.preventDefault();
-    accountCreationPage.style.display = "block";
+    // accountCreationPage.style.display = "block";
+    finishPage.style.display = "block";
     additionalInfoPage.style.display = "none";
 });
 
@@ -155,10 +156,10 @@ additionalInfoPrevButton.addEventListener("click", e => {
 //     saveDataPage.style.display = "none";
 // });
 
-creationNextButton.addEventListener("click", e => {
-    e.preventDefault();
-    finishPage.style.display = "block";
-    accountCreationPage.style.display = "none";
+// creationNextButton.addEventListener("click", e => {
+//     e.preventDefault();
+//     finishPage.style.display = "block";
+//     accountCreationPage.style.display = "none";
 
     /* 
      * FOR THE BACKEND PEOPLE:
@@ -176,13 +177,13 @@ creationNextButton.addEventListener("click", e => {
      * 
      * Moreover, ensure that the values will be matched into possible candidates.
      */
-});
+// });
 
-creationPrevButton.addEventListener("click", e => {
-    e.preventDefault();
-    additionalInfoPage.style.display = "block";
-    accountCreationPage.style.display = "none";
-});
+// creationPrevButton.addEventListener("click", e => {
+//     e.preventDefault();
+//     additionalInfoPage.style.display = "block";
+//     accountCreationPage.style.display = "none";
+// });
 
 
 /* Radio Button OnClick EventListeners */
