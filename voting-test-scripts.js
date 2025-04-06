@@ -1,8 +1,9 @@
-function TestQuestion(number, content, yesAnswer, noAnswer, advocacy) {
+function TestQuestion(number, content, yesAnswer, noAnswer, neutralAnswer, advocacy) {
     this.number = number;
     this.content = content;
     this.noAnswer = noAnswer;
     this.yesAnswer = yesAnswer;
+    this.neutralAnswer = neutralAnswer;
     this.advocacy = advocacy;
     this.answer = null;
 } 
@@ -12,6 +13,7 @@ const startPage = document.getElementById("start-test");
 const testPage = document.getElementById("test-proper");
 const additionalInfoPage = document.getElementById("additional-information");
 const accountCreationPage = document.getElementById("account-creation");
+// const saveDataPage = document.getElementById("save-data");
 const finishPage = document.getElementById("finish-test");
 
 /* Page Buttons */
@@ -22,6 +24,8 @@ const additionalInfoPrevButton = document.getElementById("additional-information
 const additionalInfoNextButton = document.getElementById("additional-information-next-button");
 const creationPrevButton = document.getElementById("creation-prev-button");
 const creationNextButton = document.getElementById("creation-finish-button");
+// const saveDataPrevButton = document.getElementById("no-save-button");
+// const saveDataNextButton = document.getElementById("yes-save-button");
 
 /* Question Page Elements */
 const advocacy = document.getElementById("advocacy");
@@ -33,6 +37,7 @@ const questionBody = document.getElementById("question-body");
 const answerDisplay = document.getElementById("answer-display-portion");
 const yesButton = document.getElementById("yes-button");
 const noButton = document.getElementById("no-button");
+const neutralButton = document.getElementById("neutral-button");
 
 
 /* Additional Information*/
@@ -43,12 +48,12 @@ const passwordInfo = document.getElementById("password-information");
 
 /* Button Properties and Functions */
 const testQuestions = [
-    new TestQuestion(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
-    new TestQuestion(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
-    new TestQuestion(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
-    new TestQuestion(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
-    new TestQuestion(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
-    new TestQuestion(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "Advocacy"),
+    new TestQuestion(1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
+    new TestQuestion(2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
+    new TestQuestion(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
+    new TestQuestion(4, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
+    new TestQuestion(5, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
+    new TestQuestion(6, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet pharetra tellus, a finibus libero. Nulla facilisi. Maecenas id lectus tortor. Nam faucibus et enim ut gravida. Praesent lacinia at tellus sit amet interdum. Praesent lobortis non lectus id suscipit. Mauris eu erat non risus tempor cursus.", "I agree bitch", "I no like", "uhuh", "Advocacy"),
 ];
 const questionCount = testQuestions.length;
 const statusPercent = 100 / testQuestions.length; 
@@ -65,9 +70,14 @@ function setTestQuestion(number) {
     flushAllRadioButtons();
     if (testQuestions[number - 1].answer !== null) {
         document.getElementById(testQuestions[number - 1].answer + "-button").style.backgroundColor = "#2B2B2B";
-        answerDisplay.innerText = (testQuestions[number - 1].answer === "yes") ? 
-                                testQuestions[number - 1].yesAnswer:
-                                testQuestions[number - 1].noAnswer; 
+
+        if(testQuestions[number - 1].answer === "yes"){
+            answerDisplay.innerText = testQuestions[number - 1].yesAnswer;
+        } else if (testQuestions[number - 1].answer === "no"){
+            answerDisplay.innerText = testQuestions[number - 1].noAnswer;
+        } else {
+            answerDisplay.innerText = testQuestions[number - 1].neutralAnswer;
+        }
     } else {
         answerDisplay.innerText = "";
     }
@@ -76,7 +86,8 @@ function setTestQuestion(number) {
 /* Radio Button Properties and Functions */
 const radioButtons = [
     yesButton,
-    noButton
+    noButton,
+    neutralButton
 ];
 function flushAllRadioButtons() {
     for (let button of radioButtons) {
@@ -132,6 +143,18 @@ additionalInfoPrevButton.addEventListener("click", e => {
     setTestQuestion(questionNumber);
 });
 
+// saveDataNextButton.addEventListener("click", e => {
+//     e.preventDefault();
+//     accountCreationPage.style.display = "block";
+//     saveDataPage.style.display = "none";
+// });
+
+// saveDataPrevButton.addEventListener("click", e => {
+//     e.preventDefault();
+//     additionalInfoPage.style.display = "block";
+//     saveDataPage.style.display = "none";
+// });
+
 creationNextButton.addEventListener("click", e => {
     e.preventDefault();
     finishPage.style.display = "block";
@@ -177,6 +200,13 @@ noButton.addEventListener("click", e => {
     noButton.style.backgroundColor = "#2B2B2B";
     testQuestions[questionNumber - 1].answer = "no";
     answerDisplay.innerText = testQuestions[questionNumber - 1].noAnswer;
+});
+neutralButton.addEventListener("click", e => {
+    e.preventDefault();
+    flushAllRadioButtons();
+    neutralButton.style.backgroundColor = "#2B2B2B";
+    testQuestions[questionNumber - 1].answer = "neutral";
+    answerDisplay.innerText = testQuestions[questionNumber - 1].neutralAnswer;
 });
 
 
