@@ -40,6 +40,23 @@
     text-wrap: balance;
   }
 
+  ul{
+    right:0;
+    margin-top: 20px;
+    border-radius: 10px;
+    background-color: #2B2B2B;
+    padding-top: 9px;
+    padding-bottom: 9px;
+    width: 250px;
+  }
+  
+  li{
+    list-style-type: none;
+    margin-left: -1em;
+    font-weight: 600;
+    line-height: 2em;
+  }
+
 /*
  * General Webpage Styles
  * These are styles that will be used by multiple webpages
