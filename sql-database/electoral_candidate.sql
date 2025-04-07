@@ -520,7 +520,7 @@ CREATE TABLE `offense` (
 
 --
 -- Dumping data for table `offense`
---
+--  
 
 INSERT INTO `offense` (`Offense_ID`, `Offense_Name`) VALUES
 (1, 'Illegal Possession of Firearms'),
