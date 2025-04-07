@@ -325,6 +325,7 @@ h5, label{
       height: 40px !important;
     }
     footer {
+      margin: 10px auto;
       width: 80%;
     }
   }
@@ -352,7 +353,7 @@ h5, label{
       justify-content: space-between;
     }
     #test-content-body {
-      padding: 10px;
+      padding: 20px;
     }
   }
   .dark-button{
