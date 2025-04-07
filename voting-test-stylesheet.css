@@ -310,9 +310,6 @@ h5, label{
 
 
 @media screen and (max-width: 1224px) {
-  body * {
-    border: solid 1px red;
-  }
   #start-test {
     h4 {
       font-size: 1.2rem;
@@ -335,15 +332,18 @@ h5, label{
 
 
 @media screen and (max-width: 890px) {
-  body * {
-    border: solid 1px green;
+  h5, p, a, .dark-button{
+    font-size: 0.8em !important;
+    line-height: 1.2em;
   }
-  h5, p {
-    font-size: 0.8em;
+  h4 { 
+    font-size: 0.9em !important;
   }
-  h4 { font-size: 1em;}
+  #main-header-content {
+    height: 50px;
+  }
   #voting-test-body-container {
-    margin: 100px 0px 0px;
+    margin: 50px 0px 0px;
     >section {
       padding: 1em; 
     }
@@ -359,4 +359,9 @@ h5, label{
     padding: 0.6em 1em; 
   }
   
+  #finish-test {
+    #finish-test-body-content {
+      padding: 1em;
+    }
+  }
 }
